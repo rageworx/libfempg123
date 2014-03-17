@@ -220,5 +220,7 @@ pip-log.txt
 
 bin/
 obj/
+out/
 *.depend
 *.layout
+*.a
