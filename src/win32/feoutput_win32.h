@@ -1,13 +1,13 @@
-#ifndef __FECODEC_WIN32_H__
-#define __FECODEC_WIN32_H__
+#ifndef __FEOUTPUT_WIN32_H__
+#define __FEOUTPUT_WIN32_H__
 
-#include "fecodec.h"
+#include "feoutput.h"
 
-class FECodecWin32 : protected FECodec
+class FEOutputWin32 : protected FEOutput
 {
     public:
-        FECodecWin32();
-        virtual ~FECodecWin32();
+        FEOutputWin32();
+        virtual ~FEOutputWin32();
 
     public:
         int  GetFormats( FEContext* context );
@@ -18,4 +18,4 @@ class FECodecWin32 : protected FECodec
         int  Reset( FEContext* context );
 };
 
-#endif /// of __FECODEC_WIN32_H__
+#endif /// of __FEOUTPUT_WIN32_H__

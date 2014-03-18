@@ -1,5 +1,5 @@
-#ifndef __FECODEC_H__
-#define __FECODEC_H__
+#ifndef __FEOUTPUT_H__
+#define __FEOUTPUT_H__
 
 #include <string>
 
@@ -23,7 +23,7 @@ struct FEContext
     void*           userptr;    /// user pointer.
 };
 
-class FECodecEvents
+class FEOutputEvents
 {
     public:
         virtual int  GetFormats( FEContext* context ) = 0;
@@ -34,7 +34,7 @@ class FECodecEvents
         virtual int  Reset( FEContext* context ) = 0;
 };
 
-class FECodec : public FECodecEvents
+class FEOutput : public FEOutputEvents
 {
     public:
         #define OUT_HEADPHONES          0x01
@@ -54,7 +54,7 @@ class FECodec : public FECodecEvents
         };
 
     public:
-        FECodec() : _info(NULL) {};
+        FEOutput() : _info(NULL) {};
 
     public:
         FEInformation* info()   { return _info; }
@@ -65,4 +65,4 @@ class FECodec : public FECodecEvents
         std::string     _lasterr;
 };
 
-#endif /// of __FECODEC_H__
+#endif /// of __FEOUTPUT_H__

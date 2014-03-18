@@ -1,5 +1,8 @@
 /*
-    This source code from MPG123/output/win32
+    This source code from
+      1. MPG123/src/audio.h
+      2. MPG123/src/output/win32.c
+
     Reprogrammed by rageworx@gmail.com
 
     ----------------------------------------------------------------------------
@@ -23,7 +26,7 @@
 
 using namespace std;
 
-#include "fecodec_win32.h"
+#include "feoutput_win32.h"
 
 #define BUFFER_SIZE     0x10000
 #define NUM_BUFFERS     8
@@ -45,7 +48,7 @@ static void write_final_buffer(struct queue_state *state);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-FECodecWin32::FECodecWin32()
+FEOutputWin32::FEOutputWin32()
 {
     _info = new FEInformation();
     if ( _info != NULL )
@@ -58,12 +61,12 @@ FECodecWin32::FECodecWin32()
     }
 }
 
-int  FECodecWin32::GetFormats( FEContext* context )
+int  FEOutputWin32::GetFormats( FEContext* context )
 {
     return 0;
 }
 
-int  FECodecWin32::Open( FEContext* context )
+int  FEOutputWin32::Open( FEContext* context )
 {
     struct
     queue_state*    state = NULL;
@@ -168,7 +171,7 @@ int  FECodecWin32::Open( FEContext* context )
     return 0;
 }
 
-int  FECodecWin32::Write( FEContext* context , unsigned char* buff, unsigned bufflen )
+int  FEOutputWin32::Write( FEContext* context , unsigned char* buff, unsigned bufflen )
 {
     struct
     queue_state*    state = NULL;
@@ -222,7 +225,7 @@ int  FECodecWin32::Write( FEContext* context , unsigned char* buff, unsigned buf
     return bufflen;
 }
 
-void FECodecWin32::Flush( FEContext* context )
+void FEOutputWin32::Flush( FEContext* context )
 {
     struct
     queue_state*    state = NULL;
@@ -253,7 +256,7 @@ void FECodecWin32::Flush( FEContext* context )
     drain_win32( context );
 }
 
-int  FECodecWin32::Close( FEContext* context )
+int  FEOutputWin32::Close( FEContext* context )
 {
     struct
     queue_state* state = NULL;
@@ -285,7 +288,7 @@ int  FECodecWin32::Close( FEContext* context )
     return 0;
 }
 
-int  FECodecWin32::Reset( FEContext* context )
+int  FEOutputWin32::Reset( FEContext* context )
 {
     return 0;
 }
